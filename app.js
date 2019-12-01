@@ -1,7 +1,7 @@
 const rover = {
-    direction: "W",
-    x: 1,
-    y: 1
+    direction: "N",
+    x: 0,
+    y: 0
 };
 
 function turnLeft(rover) {
@@ -59,7 +59,21 @@ function moveForward(rover) {
     console.log(`Rover's position is ${rover.x}, ${rover.y}`);
 }
 
-console.log(`Rover is facing ${rover.direction}`);
-turnRight(rover);
-console.log(`Rover is facing ${rover.direction}`);
-moveForward(rover);
+function command(rover, orders) {
+    for (let i = 0; i < orders.length; i++) {
+        let order = orders[i];
+        switch (order) {
+            case "l":
+                turnLeft(rover);
+                break;
+            case "r":
+                turnRight(rover);
+                break;
+            case "f":
+                moveForward(rover);
+                break;
+        }
+    }
+}
+
+command(rover, "rffrfflfrff");
