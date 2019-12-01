@@ -1,7 +1,7 @@
 const rover = {
-    direction: "N",
-    x: 0,
-    y: 0
+    direction: "W",
+    x: 1,
+    y: 1
 };
 
 function turnLeft(rover) {
@@ -42,8 +42,24 @@ function turnRight(rover) {
   
 function moveForward(rover) {
     console.log("moveForward was called")
+    switch (rover.direction) {
+        case "N":
+            rover.x -= 1;
+            break;
+        case "W":
+            rover.y -= 1;
+            break;
+        case "S":
+            rover.x += 1;
+            break;
+        case "E":
+            rover.y += 1;
+            break;
+    }
+    console.log(`Rover's position is ${rover.x}, ${rover.y}`);
 }
 
 console.log(`Rover is facing ${rover.direction}`);
-turnLeft(rover);
+turnRight(rover);
 console.log(`Rover is facing ${rover.direction}`);
+moveForward(rover);
