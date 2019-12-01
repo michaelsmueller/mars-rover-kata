@@ -1,7 +1,8 @@
 const rover = {
     direction: "N",
     x: 0,
-    y: 0
+    y: 0,
+    travelLog: []
 };
 
 function turnLeft(rover) {
@@ -41,7 +42,11 @@ function turnRight(rover) {
 }
   
 function moveForward(rover) {
-    console.log("moveForward was called")
+    console.log("moveForward was called");
+
+    let position = {x: rover.x, y: rover.y};
+    rover.travelLog.push(position);
+
     switch (rover.direction) {
         case "N":
             rover.x -= 1;
@@ -74,6 +79,10 @@ function command(rover, orders) {
                 break;
         }
     }
+    console.log(`Rover has traveled over the following positions: 
+        ${JSON.stringify(rover.travelLog, null, "  ")}`
+    );
+    console.log(`Rover is now at position ${rover.x}, ${rover.y} facing ${rover.direction}.`);
 }
 
 command(rover, "rffrfflfrff");
